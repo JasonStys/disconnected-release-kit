@@ -58,32 +58,32 @@
 # parameter: python-version — line 145
 # parameter: run — line 146
 # parameter: run — line 147
-# shell variable: binary — line 147
-# parameter: run — line 148
+# shell variable: binary — line 148
 # parameter: run — line 149
 # parameter: run — line 150
 # parameter: run — line 151
-# shell variable: env — line 151
-# parameter: security — line 152
-# parameter: name — line 153
-# parameter: runs-on — line 154
-# parameter: timeout-minutes — line 155
-# parameter: env — line 156
-# parameter: PIP_NO_CACHE_DIR — line 157
-# parameter: steps — line 158
-# parameter: uses — line 159
-# parameter: with — line 160
-# parameter: persist-credentials — line 161
-# parameter: fetch-depth — line 162
-# parameter: uses — line 163
-# parameter: with — line 164
-# parameter: python-version — line 165
-# parameter: run — line 166
+# parameter: run — line 152
+# shell variable: env — line 152
+# parameter: security — line 153
+# parameter: name — line 154
+# parameter: runs-on — line 155
+# parameter: timeout-minutes — line 156
+# parameter: env — line 157
+# parameter: PIP_NO_CACHE_DIR — line 158
+# parameter: steps — line 159
+# parameter: uses — line 160
+# parameter: with — line 161
+# parameter: persist-credentials — line 162
+# parameter: fetch-depth — line 163
+# parameter: uses — line 164
+# parameter: with — line 165
+# parameter: python-version — line 166
 # parameter: run — line 167
 # parameter: run — line 168
 # parameter: run — line 169
 # parameter: run — line 170
 # parameter: run — line 171
+# parameter: run — line 172
 # END CODE MAP
 name: Validate
 on:
@@ -144,7 +144,8 @@ jobs:
         with:
           python-version: '3.14'
       - run: python -m pip install --require-hashes -r requirements.lock
-      - run: python -m pip download --only-binary=:all: --require-hashes -r requirements.lock --dest out/wheels
+      - run: |
+          python -m pip download --only-binary=:all: --require-hashes -r requirements.lock --dest out/wheels
       - run: python scripts/offline_prepare.py
       - run: sudo apt-get update && sudo apt-get install --no-install-recommends -y iproute2 shellcheck
       - run: bash -n scripts/offline.sh && shellcheck scripts/offline.sh
