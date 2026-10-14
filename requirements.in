@@ -1,0 +1,2 @@
+# Jason Stys: maintained Ed25519 implementation; no handwritten cryptographic primitive.
+cryptography==50.0.2

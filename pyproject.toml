@@ -1,0 +1,26 @@
+# Jason Stys: strict typed signed-delivery runtime and branch coverage across every runtime module.
+[project]
+name = "disconnected-release-kit"
+version = "1.0.0"
+description = "Bounded signed offline delivery and recovery lab by Jason Stys"
+requires-python = ">=3.12"
+dependencies = ["cryptography==50.0.2"]
+[tool.ruff]
+target-version = "py312"
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["drkit"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+filterwarnings = ["error"]
+[tool.coverage.run]
+branch = true
+source = ["drkit"]
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
