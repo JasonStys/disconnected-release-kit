@@ -1,0 +1,104 @@
+{
+  "author": "Jason Stys",
+  "scope": "immutable accepted-source CI snapshot, not final-doc-commit self-attestation",
+  "accepted_source_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+  "validation": {
+    "id": 38609277079,
+    "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 116008142238,
+        "name": "Signed release + recovery / macos-15-intel / 3.14",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142238"
+      },
+      {
+        "id": 116008142508,
+        "name": "Signed release + recovery / ubuntu-24.04 / 3.14",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142508"
+      },
+      {
+        "id": 116008142715,
+        "name": "Signed release + recovery / ubuntu-24.04 / 3.12",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142715"
+      },
+      {
+        "id": 116008142743,
+        "name": "Actual no-uplink hash-locked wheel installation",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142743"
+      },
+      {
+        "id": 116008142756,
+        "name": "Locked graph + secrets + workflows",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142756"
+      },
+      {
+        "id": 116008142763,
+        "name": "Signed release + recovery / windows-latest / 3.14",
+        "conclusion": "success",
+        "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142763"
+      }
+    ]
+  },
+  "codeql": {
+    "id": 38609276722,
+    "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609276722",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 116008139295,
+        "name": "CodeQL / Python",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "test_results": {
+    "linux312": {
+      "passed": 95,
+      "skipped": 0
+    },
+    "linux314": {
+      "passed": 95,
+      "skipped": 0
+    },
+    "macos314": {
+      "passed": 95,
+      "skipped": 0
+    },
+    "windows314": {
+      "passed": 94,
+      "skipped": 1,
+      "reason": "real POSIX symlink privilege is not assumed on Windows"
+    }
+  },
+  "runtime_coverage": {
+    "statements": 397,
+    "branches": 58,
+    "combined_percent": 100,
+    "excluded_runtime_modules": 0
+  },
+  "known_vulnerabilities_found": 0,
+  "open_codeql_alerts": 0,
+  "actions_artifact_count": 0,
+  "actions_cache_count": 0,
+  "corrections": [
+    {
+      "run_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609063334",
+      "cause": "YAML plain run string contained colon-space in pip :all: argument.",
+      "fix_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+      "history_preserved": true
+    }
+  ],
+  "reports_are_synthetic_public_data": true,
+  "limitations": [
+    "network namespace test is not a physical air-gap",
+    "test coverage is not exhaustive security assurance",
+    "raw demo keys are not production key custody",
+    "latest workflow badges and final main status are checked separately from this immutable snapshot"
+  ]
+}

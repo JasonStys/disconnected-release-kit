@@ -2,7 +2,7 @@
 
 Created by Jason Stys. Domain names/contracts are the first layer of self-documentation; comments describe trust boundaries and non-obvious decisions.
 
-Use Python for strict bounded data/contracts and maintained cryptographic interfaces, Bash only for the small OS namespace lifecycle. Typed runtime, cohesive shallow modules, explicit constants, immutable snapshot wrapper, no implicit coercion, no shell interpolation of user code, no generic extractall, no unverified execution, no handwritten crypto. Unknown license/provenance information is labeled rather than invented.
+Use Python for strict bounded data/contracts and maintained cryptographic interfaces, Bash only for the small OS namespace lifecycle. Typed runtime, cohesive shallow modules, explicit constants, frozen snapshot wrapper, no implicit coercion, no shell interpolation of user code, no generic extractall, no unverified execution, no handwritten crypto. The wrapper is not a deeply immutable dictionary; activation always re-verifies supplied archive bytes rather than accepting caller-mutated snapshot objects. Unknown license/provenance information is labeled rather than invented.
 
 Each authored source file has a purpose description; named functions/classes have docstrings and meaningful parameter names. scripts/code_map.py uses Python AST to generate exact physical definition/parameter/store-variable/attribute locations without executing code. Bash and YAML maps are lexical indexes, not AST claims. Lambda parameters are indexed; repeated assignments retain distinct line locations. Vendor schema/license and hash-generated dependency locks are third-party/generated data, not authored executable code.
 

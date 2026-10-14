@@ -1,0 +1,24 @@
+{
+  "accepted_source_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+  "validation_run_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079",
+  "job_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142743",
+  "author": "Jason Stys",
+  "bundle_sha256": "ad9f2b81abd7a6130de5073f161e72561de507aa4e93b6390ec55de012ac463b",
+  "installed_wheels": 3,
+  "interfaces": [
+    "lo"
+  ],
+  "ipv4_main_routes": 0,
+  "ipv6_main_routes": 0,
+  "pip_check_passed": true,
+  "pip_no_index": true,
+  "pip_require_hashes": true,
+  "python": "3.14.8",
+  "requirements_sha256": "f4d10aed78e17452c50117c3931700d7baf7ae37137f9548f25353d65f681f4b",
+  "reserved_address_connect_blocked": true,
+  "scope": "actual no-uplink namespace offline wheel installation",
+  "signed_bundle_reverified_in_new_environment": true,
+  "source_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+  "trusted_demo_app_health": "ready",
+  "owned_namespace_cleanup": true
+}

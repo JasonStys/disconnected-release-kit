@@ -1,0 +1,28 @@
+{
+  "accepted_source_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+  "validation_run_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079",
+  "job_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142508",
+  "archive_bytes": 2255,
+  "authenticated_files": 2,
+  "author": "Jason Stys",
+  "bundle_sha256": "b1b169e48483a0ebcf732301d35c78a31ab1c1786ba8c8a09bfb0e4d7c15757b",
+  "explicit_rollback": true,
+  "highest_sequence": 2,
+  "negative_cases": {
+    "checksum-tamper": "rejected",
+    "expired": "rejected",
+    "extra-member": "rejected",
+    "future": "rejected",
+    "normal-downgrade-after-rollback": "rejected",
+    "sequence-floor": "rejected",
+    "trailing-data": "rejected",
+    "wrong-platform": "rejected",
+    "wrong-product": "rejected",
+    "wrong-trust": "rejected"
+  },
+  "python": "3.14.8",
+  "reproducible": true,
+  "retained_releases": 2,
+  "scope": "synthetic frozen-clock delivery regression",
+  "versions_activated": 2
+}

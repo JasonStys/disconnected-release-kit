@@ -1,0 +1,14 @@
+{
+  "accepted_source_revision": "53014a45af4ef0eafa4da32ad798d660ae2f57a7",
+  "validation_run_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079",
+  "job_url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/38609277079/job/116008142508",
+  "archive_bytes": 1050337,
+  "author": "Jason Stys",
+  "build_median_ms": 3.482805,
+  "payload_bytes": 1048576,
+  "python": "3.14.8",
+  "python_peak_bytes": 3310781,
+  "samples": 15,
+  "scope": "synthetic signed 1 MiB payload",
+  "verify_median_ms": 5.256758
+}

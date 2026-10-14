@@ -7,3 +7,5 @@ Building/verification hash files in O(B), sort names/descriptors in O(N log N), 
 Activation writes/verifies O(B) bytes and O(N) paths. State history grows to a bounded 1000 entries; no purge is hidden in admission. These are algorithmic bounds, not proof of constant RSS or real-disk latency. Python tracemalloc excludes native cryptography/OpenSSL allocations, OS cache and child pip processes.
 
 scripts/benchmark.py warms up then measures 15 build/verify pairs for an exact synthetic 1 MiB payload. Median timings and Python peak allocations are recorded in docs/reports/benchmark.json after actual CI, not an arbitrary throughput pass threshold. Reproducibility compares byte equality with the same key/metadata; fresh random demo keys naturally change hashes across runs.
+
+Accepted Ubuntu/Python 3.14.8 snapshot: build median 3.483 ms, verify median 5.257 ms, Python peak 3,310,781 bytes; 15 pairs, 1,048,576-byte payload and 1,050,337-byte archive. These describe that runner/sample only, not general network/media transfer or pip installation throughput.

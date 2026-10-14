@@ -6,7 +6,7 @@ Created by Jason Stys. Status: accepted for this portfolio lab, 2026-10-14.
 
 ```text
 Trusted build source + signing key -> canonical manifest + signed exact file inventory -> deterministic ZIP
-Untrusted transfer -> external trust + operator policy -> bounded verifier -> staged immutable release
+Untrusted transfer -> external trust + operator policy -> bounded verifier -> staged digest-named release
 Staged full-byte verification -> CAS atomic state pointer -> explicit operator-controlled application use
 Retained release + explicit current/target selection -> revalidation -> rollback pointer (floor preserved)
 ```
@@ -29,4 +29,4 @@ The signer and verifier are Python; the maintained cryptography package implemen
 
 The root must not exist at initialization. Activation locks, verifies, checks sequence and expected current, creates a new digest directory, writes payloads, revalidates installed bytes, flushes the pending state and replaces state.json. Failure before replacement leaves the old pointer; partial releases/pending state are retained for inspection. Power failure can affect filesystem durability: directory metadata/payload fsync is not promised. Operation locks survive process death for deliberate manual handling.
 
-Rollback never deletes files or reduces highest_sequence. It requires the target already in history and different from the expected current. Expired or below-operator-floor targets remain rejected. The local owner controls state/trust; privileged host compromise is outside this model.
+Rollback never deletes files or reduces highest_sequence. It requires the target already in history and different from the expected current. Expired or below-operator-floor targets remain rejected. Retained directories are content-addressed, not OS-enforced write-once storage; revalidation detects changed bytes. The local owner controls state/trust; privileged host compromise is outside this model.

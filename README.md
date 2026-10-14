@@ -49,6 +49,8 @@ The synthetic demo uses a clearly labeled **frozen test clock**, creates two sig
 
 All authored code has purpose/function/class descriptions and CI-checked physical definition/parameter/variable line maps. The file guide below is generated from the exact tracked set, not a partial directory listing.
 
+Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only skip on Windows; 100% combined runtime coverage, actual no-uplink three-wheel installation, all seven validation/CodeQL jobs passed. See [actual evidence and limitations](docs/validation.md); badges track latest-main workflows separately.
+
 ## Complete file guide
 
 <!-- BEGIN FILE GUIDE -->
@@ -65,7 +67,12 @@ All authored code has purpose/function/class descriptions and CI-checked physica
 | [docs/coding.md](docs/coding.md) | Coding and documentation guidelines. |
 | [docs/contracts.md](docs/contracts.md) | Release and deployment contracts. |
 | [docs/performance.md](docs/performance.md) | Performance and complexity. |
+| [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured bounded build/verification timing and Python allocation peak. |
+| [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
+| [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
+| [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
 | [docs/research.md](docs/research.md) | Primary-source research and implementation choices. |
+| [docs/review.md](docs/review.md) | Implementation review. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and release checklist. |
 | [docs/security.md](docs/security.md) | Security model and limitations. |
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance criteria. |
