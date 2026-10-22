@@ -71,6 +71,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
 | [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
+| [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/research.md](docs/research.md) | Primary-source research and implementation choices. |
 | [docs/review.md](docs/review.md) | Implementation review. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and release checklist. |
