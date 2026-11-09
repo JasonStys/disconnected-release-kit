@@ -43,6 +43,16 @@ python scripts/benchmark.py
 
 The synthetic demo uses a clearly labeled **frozen test clock**, creates two signed versions, rejects tampering, activates both and rolls back while retaining its sequence floor. Outputs remain under ignored `out/`. See [usage](docs/usage.md) for operational CLI commands and actual disconnected preparation; never use `--now` to bypass expiry in operational use.
 
+## Review a transfer candidate before activation
+
+```text
+python -m drkit.cli review --root out/deployment --bundle out/candidate.zip --trusted-key out/trust.pub --product demo-service --target portable-source --expected <exact-current-digest-or-none> --operator reviewer-1 --medium-reference transfer-review-42 --out out/candidate-review
+```
+
+Use separately provisioned public trust and omit the synthetic `--now` clock in operational use. The review authenticates the candidate and reauthenticates every installed active byte/SBOM under the owned operation lock. It reports added, removed, changed and unchanged files, exact hashes/sizes, candidate/active sequences and the retained high-water sequence. Reusing or downgrading a sequence remains ineligible even after an explicit rollback. Nothing is staged, activated or executed; original activation must independently revalidate expiry, trust, sequence and expected-current state.
+
+The new inert HTML/JSON contains a hash-bound non-executing review receipt with operator/media **aliases**. Those are local assertions, not authenticated human identity, physical transfer proof, a digital signature, malware certification or permission to run the bundle. Payload bytes and signing keys are excluded. The deployment pointer/history remain unchanged; only a temporary exclusive lock is acquired and released.
+
 ## Documentation
 
 [Architecture/ADR](docs/architecture.md) · [Contracts](docs/contracts.md) · [Security/trust](docs/security.md) · [Runbook](docs/runbook.md) · [Tests](docs/testing.md) · [Validation results](docs/validation.md) · [Performance](docs/performance.md) · [Coding guidelines](docs/coding.md) · [Research](docs/research.md) · [Third-party notice](vendor/NOTICE.md).
@@ -68,6 +78,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/contracts.md](docs/contracts.md) | Release and deployment contracts. |
 | [docs/performance.md](docs/performance.md) | Performance and complexity. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured bounded build/verification timing and Python allocation peak. |
+| [docs/reports/candidate-review-2026-11-09.md](docs/reports/candidate-review-2026-11-09.md) | Authenticated candidate review validation — November 9, 2026. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
 | [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
@@ -85,6 +96,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [drkit/contracts.py](drkit/contracts.py) | Jason Stys: strict release contracts, bounded canonical JSON and portable payload paths. |
 | [drkit/deploy.py](drkit/deploy.py) | Jason Stys: owned-root staging, atomic activation, compare-and-swap and explicit non-destructive rollback. |
 | [drkit/inventory.py](drkit/inventory.py) | Jason Stys: deterministic SPDX 2.3 blob/file inventory; no invented dependency or license claims. |
+| [drkit/review.py](drkit/review.py) | Jason Stys: authenticated candidate/active inventory review and non-executing transfer-review receipt. |
 | [examples/service.py](examples/service.py) | Jason Stys: synthetic trusted offline application, no external data, network access or commands. |
 | [pyproject.toml](pyproject.toml) | Jason Stys: strict typed signed-delivery runtime and branch coverage across every runtime module. |
 | [requirements-dev.in](requirements-dev.in) | Jason Stys: complete test, type, format, dependency-audit and SPDX schema validation tools. |
@@ -107,6 +119,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [tests/test\_contracts.py](tests/test_contracts.py) | Jason Stys: exact schema, time, path, canonical JSON and property-based admission boundaries. |
 | [tests/test\_deploy.py](tests/test_deploy.py) | Jason Stys: atomic pointer, crash residue, CAS, rollback and immutable retained-byte regressions. |
 | [tests/test\_inventory.py](tests/test_inventory.py) | Jason Stys: independent official SPDX schema checks and exact blob checksum relationships. |
+| [tests/test\_review.py](tests/test_review.py) | Jason Stys: authenticated inventory impact and non-executing review receipt regressions. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 | [vendor/NOTICE.md](vendor/NOTICE.md) | Third-party SPDX schema notice. |
 | [vendor/SPDX-LICENSE.txt](vendor/SPDX-LICENSE.txt) | Unmodified upstream CC-BY-3.0 license for the vendored SPDX schema. |
