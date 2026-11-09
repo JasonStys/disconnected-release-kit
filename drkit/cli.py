@@ -1,32 +1,34 @@
 """Jason Stys: explicit signing, verification and owned-root activation CLI; no auto-execution or key logging."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# definition: parser — line 47
-# variable: result — line 49
-# variable: sub — line 52
-# variable: key — line 53
-# variable: builder — line 58
-# variable: init — line 67
-# variable: status — line 69
-# variable: name — line 71
-# variable: command — line 72
-# definition: main — line 99
-# parameter: argv — line 99
-# variable: args — line 101
-# variable: key — line 105
-# variable: stream — line 106
-# variable: report — line 110
-# variable: bundle — line 115
-# variable: stream — line 126
-# variable: report — line 128
-# variable: report — line 131
-# variable: report — line 133
-# variable: policy — line 135
-# variable: trusted — line 141
-# variable: admitted — line 143
-# variable: report — line 144
-# variable: report — line 152
-# variable: report — line 160
-# variable: message — line 168
+# definition: parser — line 50
+# variable: result — line 52
+# variable: sub — line 55
+# variable: key — line 56
+# variable: builder — line 61
+# variable: init — line 70
+# variable: status — line 72
+# variable: name — line 74
+# variable: command — line 75
+# definition: main — line 114
+# parameter: argv — line 114
+# variable: args — line 116
+# variable: key — line 120
+# variable: stream — line 121
+# variable: report — line 125
+# variable: bundle — line 130
+# variable: stream — line 141
+# variable: report — line 143
+# variable: report — line 146
+# variable: report — line 148
+# variable: policy — line 150
+# variable: trusted — line 156
+# variable: admitted — line 158
+# variable: report — line 159
+# variable: reviewed — line 167
+# variable: report — line 177
+# variable: report — line 185
+# variable: report — line 193
+# variable: message — line 201
 # END CODE MAP
 
 from __future__ import annotations
@@ -42,6 +44,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from drkit.bundle import build, collect, read_file, verify
 from drkit.contracts import MAX_BUNDLE, Policy, Rejected
 from drkit.deploy import activate, initialize, rollback, state
+from drkit.review import publish, review
 
 
 def parser() -> argparse.ArgumentParser:
@@ -68,7 +71,7 @@ def parser() -> argparse.ArgumentParser:
     init.add_argument("--root", type=Path, required=True)
     status = sub.add_parser("status")
     status.add_argument("--root", type=Path, required=True)
-    for name in ("verify", "activate", "rollback"):
+    for name in ("verify", "activate", "rollback", "review"):
         command = sub.add_parser(name)
         command.add_argument("--trusted-key", type=Path, required=True)
         command.add_argument(
@@ -89,6 +92,18 @@ def parser() -> argparse.ArgumentParser:
                 required=True,
                 help="Exact current digest; 'none' for initial activation.",
             )
+        if name == "review":
+            command.add_argument(
+                "--operator",
+                required=True,
+                help="Local nonsecret alias, not authenticated identity",
+            )
+            command.add_argument(
+                "--medium-reference",
+                required=True,
+                help="Nonsecret review alias, not physical transfer proof",
+            )
+            command.add_argument("--out", type=Path, required=True)
         if name == "rollback":
             command.add_argument("--release", required=True)
     builder.add_argument("--product", required=True)
@@ -147,6 +162,24 @@ def main(argv: list[str] | None = None) -> int:
                     "version": admitted.metadata["version"],
                     "files": len(admitted.files),
                     "sequence": admitted.metadata["sequence"],
+                }
+            elif args.operation == "review":
+                reviewed = review(
+                    args.root,
+                    read_file(args.bundle, MAX_BUNDLE),
+                    trusted,
+                    policy,
+                    None if args.expected == "none" else args.expected,
+                    args.operator,
+                    args.medium_reference,
+                )
+                publish(reviewed, args.out)
+                report = {
+                    "candidate_digest": reviewed["candidate_digest"],
+                    "normal_activation_eligible_at_review": reviewed[
+                        "normal_activation_eligible_at_review"
+                    ],
+                    "files": len(reviewed["files"]),
                 }
             elif args.operation == "activate":
                 report = activate(
