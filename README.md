@@ -76,13 +76,17 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/architecture.md](docs/architecture.md) | Architecture and ADR 001 — authenticated disconnected delivery. |
 | [docs/coding.md](docs/coding.md) | Coding and documentation guidelines. |
 | [docs/contracts.md](docs/contracts.md) | Release and deployment contracts. |
+| [docs/handbook.md](docs/handbook.md) | Disconnected Release Kit handbook. |
 | [docs/performance.md](docs/performance.md) | Performance and complexity. |
 | [docs/reports/benchmark.json](docs/reports/benchmark.json) | Measured bounded build/verification timing and Python allocation peak. |
 | [docs/reports/candidate-review-2026-11-09.md](docs/reports/candidate-review-2026-11-09.md) | Authenticated candidate review validation — November 9, 2026. |
 | [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
+| [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
 | [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
+| [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
+| [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
 | [docs/research.md](docs/research.md) | Primary-source research and implementation choices. |
 | [docs/review.md](docs/review.md) | Implementation review. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and release checklist. |
@@ -110,6 +114,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [scripts/offline.sh](scripts/offline.sh) | Jason Stys: disposable CI-only loopback namespace; never alter the developer PC or host routes. |
 | [scripts/offline\_prepare.py](scripts/offline_prepare.py) | Jason Stys: package reviewed source plus hash-locked platform wheels for an explicit disposable CI test. |
 | [scripts/offline\_probe.py](scripts/offline_probe.py) | Jason Stys: actual no-uplink Linux namespace install of separately verified hash-locked wheelhouse. |
+| [scripts/publication\_text.py](scripts/publication_text.py) | Jason Stys: inspect only named reviewed Office editions without hiding their XML. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: fail-closed tracked-file privacy, third-party schema integrity and no-storage workflow checks. |
 | [tests/conftest.py](tests/conftest.py) | Jason Stys: isolated synthetic signing fixtures; no personal data or production trust. |
@@ -119,6 +124,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [tests/test\_contracts.py](tests/test_contracts.py) | Jason Stys: exact schema, time, path, canonical JSON and property-based admission boundaries. |
 | [tests/test\_deploy.py](tests/test_deploy.py) | Jason Stys: atomic pointer, crash residue, CAS, rollback and immutable retained-byte regressions. |
 | [tests/test\_inventory.py](tests/test_inventory.py) | Jason Stys: independent official SPDX schema checks and exact blob checksum relationships. |
+| [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tests/test\_review.py](tests/test_review.py) | Jason Stys: authenticated inventory impact and non-executing review receipt regressions. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 | [vendor/NOTICE.md](vendor/NOTICE.md) | Third-party SPDX schema notice. |
@@ -126,3 +132,9 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [vendor/spdx-schema.json](vendor/spdx-schema.json) | Immutable upstream SPDX 2.3.1 JSON schema; third-party CC-BY-3.0. |
 
 <!-- END FILE GUIDE -->
+
+## Documentation editions
+
+Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
+
+[Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.

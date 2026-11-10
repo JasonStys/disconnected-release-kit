@@ -1,20 +1,20 @@
 """Jason Stys: fail-closed tracked-file privacy, third-party schema integrity and no-storage workflow checks."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 26
-# variable: SCHEMA_SHA256 — line 27
-# definition: main — line 30
-# variable: names — line 32
-# variable: name — line 38
-# variable: parts — line 39
-# variable: part — line 41
-# variable: path — line 44
-# variable: text — line 47
-# variable: schema — line 55
-# variable: path — line 58
-# variable: text — line 59
-# variable: action — line 66
-# variable: codeql — line 71
-# variable: flag — line 72
+# variable: ROOT — line 31
+# variable: SCHEMA_SHA256 — line 32
+# definition: main — line 35
+# variable: names — line 37
+# variable: name — line 43
+# variable: parts — line 44
+# variable: part — line 46
+# variable: path — line 49
+# variable: text — line 52
+# variable: schema — line 60
+# variable: path — line 63
+# variable: text — line 64
+# variable: action — line 71
+# variable: codeql — line 76
+# variable: flag — line 77
 # END CODE MAP
 
 import hashlib
@@ -22,6 +22,11 @@ import json
 import re
 import subprocess
 from pathlib import Path
+
+if __package__:
+    from .publication_text import public_text
+else:
+    from publication_text import public_text
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_SHA256 = "4126dc29f15e92feec92e9622f4939131ad58b125d6f578aa93e980a6e6f3212"
@@ -44,7 +49,7 @@ def main() -> None:
         path = ROOT / name
         if path.is_symlink() or path.is_junction():
             raise ValueError("tracked links are forbidden")
-        text = path.read_text(encoding="utf-8")
+        text = public_text(path, ROOT)
         if re.search(
             r"(?:ghp_|github_pat_|sk-proj-)[A-Za-z0-9_]{12,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
             text,
