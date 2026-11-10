@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "project": "disconnected-release-kit",
+  "author": "Jason Stys",
+  "editionDate": "2026-11-09",
+  "sourceBaseline": "fc7251517c832ca6938ebf70b40a8ca13c593edf",
+  "sourceUrl": "https://github.com/JasonStys/disconnected-release-kit/tree/fc7251517c832ca6938ebf70b40a8ca13c593edf",
+  "functionalEvidenceBaseline": "fc7251517c832ca6938ebf70b40a8ca13c593edf",
+  "evidenceObservedAt": "2026-11-10T05:25:40.628667+00:00",
+  "workflowEvidence": [
+    {
+      "conclusion": "success",
+      "databaseId": 42714319175,
+      "event": "push",
+      "headSha": "fc7251517c832ca6938ebf70b40a8ca13c593edf",
+      "name": "Validate",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/42714319175"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42714318986,
+      "event": "push",
+      "headSha": "fc7251517c832ca6938ebf70b40a8ca13c593edf",
+      "name": "CodeQL",
+      "status": "completed",
+      "url": "https://github.com/JasonStys/disconnected-release-kit/actions/runs/42714318986"
+    }
+  ],
+  "summary": "Review authenticated candidate/active installed bytes and SPDX inventory under owned locking with state/trust/policy-bound non-executing receipts.",
+  "rationale": "Supports offline release review without mistaking filenames or transfer completion for authenticity.",
+  "limitations": [
+    "Operator/media aliases are assertions, not identity, physical-transfer proof or signatures.",
+    "Review does not execute payloads or grant activation permission.",
+    "Owned locks coordinate cooperating operations on a trusted filesystem, not a hostile administrator or arbitrary external writer."
+  ],
+  "documents": [
+    {
+      "filename": "project-guide.docx",
+      "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "bytes": 43294,
+      "sha256": "ebd7184359865a805b335b1f14b64958214ea9046e7e063e093df80aca86539b",
+      "sourceBaseline": "fc7251517c832ca6938ebf70b40a8ca13c593edf",
+      "visualReview": {
+        "approved": true,
+        "method": "Every rendered page individually viewed at readable original resolution",
+        "pageCount": 4,
+        "renderedPageSha256": {
+          "page-1.png": "22c7ec91704c76275f38ba5fa11772e33a152180e0036b5cab9f8110366c577e",
+          "page-2.png": "675802761946f7ac4cf203020c2b2dfd277caa37cd0d7490336cdbbb68c4f101",
+          "page-3.png": "6d63c8ac162febc991fc35f37858431b03756a2c1789bc3ee5c5322b7eb4b8d7",
+          "page-4.png": "88296eb6396b532e6e601764c3e89f0fbfcca43ab52b3eff8c58820a09c148ba"
+        }
+      }
+    }
+  ],
+  "scope": "Reviewed documentation editions of the cited source. Checksums identify bytes, not authorship. Historical measurements retain their own dates; integration CI must be checked separately."
+}
