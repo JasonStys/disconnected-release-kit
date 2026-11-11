@@ -91,12 +91,15 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/installed-windows-1.1.0-2026-11-11.md](docs/reports/installed-windows-1.1.0-2026-11-11.md) | Observed installed workflows, delivery evidence, data preservation and practical limits. |
 | [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation — November 11, 2026. |
 | [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
 | [docs/reports/runner-network-2026-11-11.md](docs/reports/runner-network-2026-11-11.md) | Disposable-runner package acquisition — 2026-11-11. |
+| [docs/reports/windows-application-guide-1.1.0.docx](docs/reports/windows-application-guide-1.1.0.docx) | Current peer-reviewed installed app guide with actual screenshots and immutable code. |
+| [docs/reports/windows-application-guide-1.1.0.json](docs/reports/windows-application-guide-1.1.0.json) | Exact guide, source, image and individually reviewed page identities. |
 | [docs/research.md](docs/research.md) | Primary-source research and implementation choices. |
 | [docs/review.md](docs/review.md) | Implementation review. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and release checklist. |
@@ -152,6 +155,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [tests/test\_bundle\_input.py](tests/test_bundle_input.py) | Actual same-descriptor regular-file and nonblocking FIFO admission for signed inputs. Jason Stys. |
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: complete explicit CLI lifecycle, safe failures and standalone module entry point. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Jason Stys: exact schema, time, path, canonical JSON and property-based admission boundaries. |
+| [tests/test\_current\_installed\_guide.py](tests/test_current_installed_guide.py) | Jason Stys: current named Word XML visibility and unknown binary refusal; navigation in docs/CODE_INDEX.md. |
 | [tests/test\_deploy.py](tests/test_deploy.py) | Jason Stys: atomic pointer, crash residue, CAS, rollback and immutable retained-byte regressions. |
 | [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
 | [tests/test\_desktop\_io.py](tests/test_desktop_io.py) | Private state JSON and bounded descriptor-read boundary cases with actual file bytes. Jason Stys. |
@@ -177,3 +181,8 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 Start with the [organized handbook](docs/handbook.md) for current usage, design, security and test guidance. Reviewed downloadable editions: [project-guide.docx](docs/reports/project-guide.docx).
 
 [Publication identities and source scope](docs/reports/publications.json) · [Documentation validation record](docs/reports/documentation-refresh-2026-11-09.md). Historical results retain their own tested revision and date.
+
+
+## Current installed application guide
+
+The published **1.1.0** application has a [four-page guide](docs/reports/windows-application-guide-1.1.0.docx) with actual installed screenshots, a practical journey, immutable source excerpts and operating limits. The [installed validation report](docs/reports/installed-windows-1.1.0-2026-11-11.md) explains the results and [review manifest](docs/reports/windows-application-guide-1.1.0.json) records exact source, image and page identities. Historical documentation remains available.
