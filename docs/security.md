@@ -23,3 +23,8 @@ Pinned Actions commits, minimum permissions, checkout credentials not persisted,
 ## Reporting
 
 For a suspected vulnerability, contact Jason Stys through [GitHub](https://github.com/JasonStys) or [LinkedIn](https://www.linkedin.com/in/jason-stys-31b30b351/). Do not post private keys, personal data or exploitable production deployment details publicly.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). Verification alone does not authenticate deployed state. Candidate comparison temporarily acquires the original owned deployment operation lock, revalidates active bytes and leaves the deployment pointer/history unchanged. GUI history is a separate SQLite transaction, not atomic with deployment state; review is not activation permission or malware certification. Operator/media aliases are assertions, not authentication or physical-transfer proof. Independent trust comes from outside the bundle. No signing-key picker, arbitrary payload execution, download or live deployment is exposed.

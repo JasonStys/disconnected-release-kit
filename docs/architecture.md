@@ -30,3 +30,8 @@ The signer and verifier are Python; the maintained cryptography package implemen
 The root must not exist at initialization. Activation locks, verifies, checks sequence and expected current, creates a new digest directory, writes payloads, revalidates installed bytes, flushes the pending state and replaces state.json. Failure before replacement leaves the old pointer; partial releases/pending state are retained for inspection. Power failure can affect filesystem durability: directory metadata/payload fsync is not promised. Operation locks survive process death for deliberate manual handling.
 
 Rollback never deletes files or reduces highest_sequence. It requires the target already in history and different from the expected current. Expired or below-operator-floor targets remain rejected. Retained directories are content-addressed, not OS-enforced write-once storage; revalidation detects changed bytes. The local owner controls state/trust; privileged host compromise is outside this model.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). Verification alone does not authenticate deployed state. Candidate comparison temporarily acquires the original owned deployment operation lock, revalidates active bytes and leaves the deployment pointer/history unchanged. GUI history is a separate SQLite transaction, not atomic with deployment state; review is not activation permission or malware certification. Operator/media aliases are assertions, not authentication or physical-transfer proof. Independent trust comes from outside the bundle. No signing-key picker, arbitrary payload execution, download or live deployment is exposed.

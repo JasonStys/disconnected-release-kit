@@ -4,27 +4,27 @@
 # variable: BEGIN — line 36
 # variable: END — line 36
 # variable: SPECIAL — line 37
-# definition: purpose — line 55
-# parameter: name — line 55
-# variable: text — line 59
-# variable: lines — line 64
-# variable: index — line 65
-# variable: line — line 65
-# variable: description — line 67
-# variable: continuation — line 69
-# variable: description — line 75
-# definition: main — line 80
-# variable: parser — line 82
-# variable: args — line 84
-# variable: names — line 85
-# variable: rows — line 93
-# variable: name — line 94
-# variable: label — line 95
-# variable: path — line 97
-# variable: original — line 98
-# variable: end — line 99
-# variable: start — line 99
-# variable: expected — line 100
+# definition: purpose — line 60
+# parameter: name — line 60
+# variable: text — line 64
+# variable: lines — line 69
+# variable: index — line 70
+# variable: line — line 70
+# variable: description — line 72
+# variable: continuation — line 74
+# variable: description — line 80
+# definition: main — line 85
+# variable: parser — line 87
+# variable: args — line 89
+# variable: names — line 90
+# variable: rows — line 98
+# variable: name — line 99
+# variable: label — line 100
+# variable: path — line 102
+# variable: original — line 103
+# variable: end — line 104
+# variable: start — line 104
+# variable: expected — line 105
 # END CODE MAP
 
 import argparse
@@ -35,6 +35,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "licenses/cryptography-50.0.2-rust-notices.txt": "Exact32crate/62original notice texts from checksum-verified registry archives, conservative provider-SBOM scope.",
+    "licenses/cryptography-50.0.2-rust-inventory.json": "Minimal exact-wheel Rust component, archive and original-notice byte identities; provider private build paths omitted.",
+    "licenses/RUST-COPYRIGHT-library.html": "Actual Rust1.98.1 standard-library copyright inventory matching the compiler-source identity embedded in the crypto wheel.",
+    "requirements-native.lock": "Exact hash-locked portable freezer graph, separate from the project runtime.",
+    "licenses/OpenSSL-4.0.3-LICENSE.txt": "Unmodified Apache-2.0 license from the exact OpenSSL 4.0.3 source tag used by the cryptography wheel.",
     "docs/reports/project-guide.docx": "Reviewed source-bound Word guide with dated validation observations and practical limits.",
     "docs/reports/publications.json": "Exact publication hashes, reviewed page identities and source/evidence baselines.",
     ".gitignore": "Exclude local keys, environments, release bundles and private diagnostics.",

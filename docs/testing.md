@@ -32,3 +32,8 @@ python -m pip_audit -r requirements-dev.lock --disable-pip --no-deps
 ```
 
 Test output stays in logs/ignored local folders; no Actions upload/cache steps. Latest status and immutable accepted-source reports are separate.
+
+
+## Native desktop workbench
+
+See [desktop controls and owner-local privacy](windows-app.md) and [dated actual native validation](reports/native-workbench-2026-11-11.md). Verification alone does not authenticate deployed state. Candidate comparison temporarily acquires the original owned deployment operation lock, revalidates active bytes and leaves the deployment pointer/history unchanged. GUI history is a separate SQLite transaction, not atomic with deployment state; review is not activation permission or malware certification. Operator/media aliases are assertions, not authentication or physical-transfer proof. Independent trust comes from outside the bundle. No signing-key picker, arbitrary payload execution, download or live deployment is exposed.

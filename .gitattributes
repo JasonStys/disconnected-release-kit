@@ -1,3 +1,7 @@
 * text=auto eol=lf
 *.docx binary
 *.xlsx binary
+
+# Verbatim third-party notice bytes; source/privacy checks remain active.
+licenses/RUST-COPYRIGHT-library.html -text -whitespace
+licenses/cryptography-50.0.2-rust-notices.txt -text -whitespace
