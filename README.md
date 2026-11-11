@@ -96,6 +96,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
 | [docs/reports/publications.json](docs/reports/publications.json) | Exact publication hashes, reviewed page identities and source/evidence baselines. |
+| [docs/reports/runner-network-2026-11-11.md](docs/reports/runner-network-2026-11-11.md) | Disposable-runner package acquisition — 2026-11-11. |
 | [docs/research.md](docs/research.md) | Primary-source research and implementation choices. |
 | [docs/review.md](docs/review.md) | Implementation review. |
 | [docs/runbook.md](docs/runbook.md) | Operator runbook and release checklist. |
@@ -130,6 +131,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [requirements.lock](requirements.lock) | Universal full hash-locked offline runtime graph. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Jason Stys: bounded synthetic build/verify benchmark; no hardware-independent speed promises. |
 | [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
+| [scripts/check\_tk\_runtime.py](scripts/check_tk_runtime.py) | Require the selected interpreter's actual native Tk imports and loaded Tcl, without a display. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Jason Stys: exact Python AST definition/parameter/variable maps and lexical Bash/workflow line indexes. |
 | [scripts/demo.py](scripts/demo.py) | Jason Stys: synthetic reproducibility, admission rejection and explicit rollback acceptance report. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses. |
@@ -160,7 +162,9 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tests/test\_review.py](tests/test_review.py) | Jason Stys: authenticated inventory impact and non-executing review receipt regressions. |
+| [tests/test\_runner\_network\_policy.py](tests/test_runner_network_policy.py) | Actual workflow policy mutants for signed disposable-runner APT acquisition. Jason Stys. |
 | [tests/test\_runtime\_terms.py](tests/test_runtime_terms.py) | Independent changed-inventory/compiler/notice refusal cases; actual native packaging observes the real wheel. Jason Stys. |
+| [tests/test\_tk\_runtime.py](tests/test_tk_runtime.py) | Actual isolated native Tcl positive plus fail-closed loader/interpreter/version controls. Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 | [vendor/NOTICE.md](vendor/NOTICE.md) | Third-party SPDX schema notice. |
 | [vendor/SPDX-LICENSE.txt](vendor/SPDX-LICENSE.txt) | Unmodified upstream CC-BY-3.0 license for the vendored SPDX schema. |
