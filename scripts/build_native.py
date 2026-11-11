@@ -3,26 +3,28 @@
 No publication, installation, shortcut change, host collection or Docker action.
 """
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: ROOT — line 38
-# definition: main — line 42
-# variable: version — line 55
-# variable: source — line 58
-# variable: dirty — line 61
-# variable: output — line 66
-# variable: release — line 66
-# variable: resource_paths — line 81
-# variable: name — line 93
-# variable: metadata — line 95
+# variable: ROOT — line 41
+# definition: main — line 45
+# variable: version — line 58
+# variable: source — line 61
+# variable: dirty — line 64
+# variable: output — line 69
+# variable: release — line 69
+# variable: extra_terms — line 83
+# variable: terms_receipt — line 83
+# variable: resource_paths — line 91
 # variable: name — line 103
-# variable: path — line 103
-# variable: command — line 109
-# variable: name — line 130
-# variable: path — line 130
-# variable: command — line 133
-# variable: command — line 134
-# variable: executable — line 148
-# variable: stream — line 149
-# variable: digest — line 150
+# variable: metadata — line 105
+# variable: name — line 113
+# variable: path — line 113
+# variable: command — line 119
+# variable: name — line 140
+# variable: path — line 140
+# variable: command — line 143
+# variable: command — line 144
+# variable: executable — line 158
+# variable: stream — line 159
+# variable: digest — line 160
 # END CODE MAP
 
 import hashlib
@@ -34,6 +36,7 @@ import tomllib
 from pathlib import Path
 
 from native_common import icon, notices
+from runtime_terms import collect
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -76,6 +79,13 @@ def main() -> None:
         (release / "notices.txt").read_bytes()
         + b"\n\nOpenSSL4.0.3 / OpenSSL project / Apache2.0\n"
         + (ROOT / "licenses/OpenSSL-4.0.3-LICENSE.txt").read_bytes()
+    )
+    extra_terms, terms_receipt = collect(ROOT / "licenses")
+    (release / "notices.txt").write_bytes(
+        (release / "notices.txt").read_bytes() + extra_terms
+    )
+    (output / "crypto-notice-receipt.json").write_text(
+        json.dumps(terms_receipt, indent=2) + "\n", encoding="utf8"
     )
     icon(output / "app.ico")
     resource_paths = {

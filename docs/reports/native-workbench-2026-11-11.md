@@ -20,3 +20,10 @@ The Windows CI lane builds the complete one-file program and repeats the actual 
 Verification alone does not authenticate deployed state. Candidate comparison temporarily acquires the original owned deployment operation lock, revalidates active bytes and leaves the deployment pointer/history unchanged. GUI history is a separate SQLite transaction, not atomic with deployment state; review is not activation permission or malware certification. Operator/media aliases are assertions, not authentication or physical-transfer proof. Independent trust comes from outside the bundle. No signing-key picker, arbitrary payload execution, download or live deployment is exposed.
 
 The profile guards prevent accidental linked-file writes to fixed mutable state before initialization. They do not turn a local single-OS-owner application into a hostile-administrator sandbox. Reports and aliases are not authenticated independent attestations. The portable executable is unsigned; no cross-platform native distribution, NSIS installation, universal safety or certification is asserted.
+
+
+## Exact cryptographic runtime terms follow-up
+
+The initial candidate retained the main cryptography/cffi/OpenSSL terms. The corrected candidate additionally retains the actual wheel's conservative32external-crate/62original-file notice set and full matching Rust1.98.1 library inventory. Registry archives were downloaded as inert bounded data and SHA-verified; only original license/copyright/NOTICE text was read. No crate code was executed or extracted and no dependency or runtime behavior changed. Actual wheel identity and original notice hashes are checked at build time. See the [license inventory and scope](../../licenses/README.md); earlier candidate proof is retained as historical, not relabeled as this updated package.
+
+The complete follow-up local source suite passed: **209 passed / 5 explicit Windows-platform skips / 96.78% combined runtime coverage**, retaining the original95% floor. Initial candidate measurements above remain historical; final updated clean-package/native and hosted proofs are separate exact-source receipts.

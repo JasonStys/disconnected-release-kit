@@ -119,6 +119,9 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [examples/service.py](examples/service.py) | Jason Stys: synthetic trusted offline application, no external data, network access or commands. |
 | [licenses/OpenSSL-4.0.3-LICENSE.txt](licenses/OpenSSL-4.0.3-LICENSE.txt) | Unmodified Apache-2.0 license from the exact OpenSSL 4.0.3 source tag used by the cryptography wheel. |
 | [licenses/README.md](licenses/README.md) | Bundled cryptographic runtime notices. |
+| [licenses/RUST-COPYRIGHT-library.html](licenses/RUST-COPYRIGHT-library.html) | Actual Rust1.98.1 standard-library copyright inventory matching the compiler-source identity embedded in the crypto wheel. |
+| [licenses/cryptography-50.0.2-rust-inventory.json](licenses/cryptography-50.0.2-rust-inventory.json) | Minimal exact-wheel Rust component, archive and original-notice byte identities; provider private build paths omitted. |
+| [licenses/cryptography-50.0.2-rust-notices.txt](licenses/cryptography-50.0.2-rust-notices.txt) | Exact32crate/62original notice texts from checksum-verified registry archives, conservative provider-SBOM scope. |
 | [pyproject.toml](pyproject.toml) | Jason Stys: strict typed signed-delivery runtime and branch coverage across every runtime module. |
 | [requirements-dev.in](requirements-dev.in) | Jason Stys: complete test, type, format, dependency-audit and SPDX schema validation tools. |
 | [requirements-dev.lock](requirements-dev.lock) | Universal full hash-locked development and independent audit graph. |
@@ -137,6 +140,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [scripts/offline\_prepare.py](scripts/offline_prepare.py) | Jason Stys: package reviewed source plus hash-locked platform wheels for an explicit disposable CI test. |
 | [scripts/offline\_probe.py](scripts/offline_probe.py) | Jason Stys: actual no-uplink Linux namespace install of separately verified hash-locked wheelhouse. |
 | [scripts/publication\_text.py](scripts/publication_text.py) | Jason Stys: inspect only named reviewed Office editions without hiding their XML. |
+| [scripts/runtime\_terms.py](scripts/runtime_terms.py) | Verify captured original crypto/Rust terms against the actual installed wheel on each build OS. Jason Stys. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
 | [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: fail-closed tracked-file privacy, third-party schema integrity and no-storage workflow checks. |
@@ -156,6 +160,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tests/test\_review.py](tests/test_review.py) | Jason Stys: authenticated inventory impact and non-executing review receipt regressions. |
+| [tests/test\_runtime\_terms.py](tests/test_runtime_terms.py) | Independent changed-inventory/compiler/notice refusal cases; actual native packaging observes the real wheel. Jason Stys. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |
 | [vendor/NOTICE.md](vendor/NOTICE.md) | Third-party SPDX schema notice. |
 | [vendor/SPDX-LICENSE.txt](vendor/SPDX-LICENSE.txt) | Unmodified upstream CC-BY-3.0 license for the vendored SPDX schema. |

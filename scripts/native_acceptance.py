@@ -80,34 +80,34 @@
 # variable: widget — line 434
 # variable: text — line 440
 # variable: value — line 443
-# definition: completed — line 448
-# parameter: index — line 448
-# variable: files — line 454
-# variable: parent — line 481
-# variable: target — line 487
-# variable: path — line 488
-# variable: selected — line 491
-# definition: start — line 502
-# parameter: index — line 502
-# variable: key — line 517
-# variable: archive — line 518
-# variable: selected — line 529
-# variable: public — line 530
-# variable: key — line 552
-# definition: package — line 554
-# parameter: content — line 554
-# parameter: sequence — line 554
-# variable: candidate — line 568
-# variable: initial — line 568
-# variable: public — line 572
-# variable: deployment — line 574
-# variable: active — line 576
-# variable: selected — line 583
-# variable: field — line 589
-# variable: path — line 589
-# definition: begin — line 603
-# variable: identity — line 607
-# attribute: report_callback_exception — line 623
+# definition: completed — line 458
+# parameter: index — line 458
+# variable: files — line 464
+# variable: parent — line 491
+# variable: target — line 497
+# variable: path — line 498
+# variable: selected — line 501
+# definition: start — line 512
+# parameter: index — line 512
+# variable: key — line 527
+# variable: archive — line 528
+# variable: selected — line 539
+# variable: public — line 540
+# variable: key — line 562
+# definition: package — line 564
+# parameter: content — line 564
+# parameter: sequence — line 564
+# variable: candidate — line 578
+# variable: initial — line 578
+# variable: public — line 582
+# variable: deployment — line 584
+# variable: active — line 586
+# variable: selected — line 593
+# variable: field — line 599
+# variable: path — line 599
+# definition: begin — line 613
+# variable: identity — line 617
+# attribute: report_callback_exception — line 633
 # END CODE MAP
 
 from __future__ import annotations
@@ -440,7 +440,17 @@ def exercise(window: Workbench, output: Path, reopen: bool) -> None:
         text = texts[0].get("1.0", "end")
         assert all(
             value in text
-            for value in ("Python", "Tcl", "Tk", "cryptography", "OpenSSL4.0.3", "cffi")
+            for value in (
+                "Python",
+                "Tcl",
+                "Tk",
+                "cryptography",
+                "OpenSSL4.0.3",
+                "cffi",
+                "unicode-ident-1.0.24",
+                "target-lexicon-0.13.5",
+                "Rust",
+            )
         )
         dialog.destroy()
         receipt["steps"].append("actual-bundled-runtime-license-window")
