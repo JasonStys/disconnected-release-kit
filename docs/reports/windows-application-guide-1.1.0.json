@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "repository": "disconnected-release-kit",
+  "runtimeVersion": "1.1.0",
+  "runtimeSource": "22ba6c0b6ff464624f8b56ab1d9a19737cef6408",
+  "createdAt": "2026-11-11T16:19:54.350Z",
+  "author": "Jason Stys",
+  "document": "windows-application-guide-1.1.0.docx",
+  "sha256": "e7cbd6127295f5863dded8c4ec9cd129075ab4e0c7127c9b6de541e19343e0fb",
+  "screenshots": [
+    {
+      "file": "selected-evidence.png",
+      "sha256": "82b97254747d2362a823d0897020dbfe8f8255fa03d04dcec487e3b7b4cecda5",
+      "width": 1276,
+      "height": 899,
+      "caption": "The actual installed application presents independently authenticated bundle inventory and retained policy evidence."
+    },
+    {
+      "file": "owner-unknown-review.png",
+      "sha256": "f7b9f5bd7f51e1f1dbf32bc5933a0c5a64d2afc442ec625e5c944495c6f3345c",
+      "width": 1276,
+      "height": 899,
+      "caption": "The installed review view keeps candidate eligibility and deployment context separate from activation; complete signed evidence remains downloadable."
+    }
+  ],
+  "snippets": [
+    {
+      "file": "drkit/desktop_project.py",
+      "first": 303,
+      "last": 318,
+      "sha256": "954bd2712fa838af29ad62616e064614ea474084e8233ef2574d1c2a24ea162d",
+      "url": "https://github.com/JasonStys/disconnected-release-kit/blob/22ba6c0b6ff464624f8b56ab1d9a19737cef6408/drkit/desktop_project.py#L303"
+    }
+  ],
+  "observedTests": [
+    {
+      "name": "Independent distribution",
+      "observed": "Downloaded provider assets, sidecar and installed file identities matched. The complete installed app was used; installation resources remained byte-identical.",
+      "result": "Passed"
+    },
+    {
+      "name": "Actual app use and restart",
+      "observed": "Ten actual workflows and ten complete evidence bundles passed the original installed consumer, including negative cases, no-overwrite export and two normal exits with exact retained history.",
+      "result": "Passed"
+    },
+    {
+      "name": "Source and security",
+      "observed": "All current main workflows passed before publication. All configured exact-source processed CodeQL categories had zero raw findings and zero open alerts.",
+      "result": "Passed"
+    },
+    {
+      "name": "Individual shortcut",
+      "observed": "Desktop and Start-menu targets were read back against the installed version. Normal default-profile shortcut activation is separate from full installed executable acceptance.",
+      "result": "Verified"
+    }
+  ],
+  "visualReview": "all four pages individually approved",
+  "reviewer": "audit_space_drone",
+  "reviewedPageHashes": {
+    "page-1.png": "aefc146ba3c0bac189f609a17164005ed5418cba2e09809cc5167f48b9a21e98",
+    "page-2.png": "7ad6deedd73ce925d1b4481b7a54454c707f56c3f474148d3d1dd0541aabc6d9",
+    "page-3.png": "5d9499d897c8f96a843fc287d9507e551bee45cbd1f523128d3e5f9d8c2c841b",
+    "page-4.png": "57e1bd378f8e56eb8537141751929e81e3bf5a5edfb48418bfe8b339892c9197"
+  },
+  "privateTestInputsOnly": true
+}

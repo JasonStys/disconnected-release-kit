@@ -4,27 +4,27 @@
 # variable: BEGIN — line 36
 # variable: END — line 36
 # variable: SPECIAL — line 37
-# definition: purpose — line 60
-# parameter: name — line 60
-# variable: text — line 64
-# variable: lines — line 69
-# variable: index — line 70
-# variable: line — line 70
-# variable: description — line 72
-# variable: continuation — line 74
-# variable: description — line 80
-# definition: main — line 85
-# variable: parser — line 87
-# variable: args — line 89
-# variable: names — line 90
-# variable: rows — line 98
-# variable: name — line 99
-# variable: label — line 100
-# variable: path — line 102
-# variable: original — line 103
-# variable: end — line 104
-# variable: start — line 104
-# variable: expected — line 105
+# definition: purpose — line 63
+# parameter: name — line 63
+# variable: text — line 67
+# variable: lines — line 72
+# variable: index — line 73
+# variable: line — line 73
+# variable: description — line 75
+# variable: continuation — line 77
+# variable: description — line 83
+# definition: main — line 88
+# variable: parser — line 90
+# variable: args — line 92
+# variable: names — line 93
+# variable: rows — line 101
+# variable: name — line 102
+# variable: label — line 103
+# variable: path — line 105
+# variable: original — line 106
+# variable: end — line 107
+# variable: start — line 107
+# variable: expected — line 108
 # END CODE MAP
 
 import argparse
@@ -35,6 +35,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BEGIN, END = "<!-- BEGIN FILE GUIDE -->", "<!-- END FILE GUIDE -->"
 SPECIAL = {
+    "docs/reports/windows-application-guide-1.1.0.docx": "Current peer-reviewed installed app guide with actual screenshots and immutable code.",
+    "docs/reports/windows-application-guide-1.1.0.json": "Exact guide, source, image and individually reviewed page identities.",
+    "docs/reports/installed-windows-1.1.0-2026-11-11.md": "Observed installed workflows, delivery evidence, data preservation and practical limits.",
     "licenses/cryptography-50.0.2-rust-notices.txt": "Exact32crate/62original notice texts from checksum-verified registry archives, conservative provider-SBOM scope.",
     "licenses/cryptography-50.0.2-rust-inventory.json": "Minimal exact-wheel Rust component, archive and original-notice byte identities; provider private build paths omitted.",
     "licenses/RUST-COPYRIGHT-library.html": "Actual Rust1.98.1 standard-library copyright inventory matching the compiler-source identity embedded in the crypto wheel.",
