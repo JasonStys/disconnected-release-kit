@@ -22,6 +22,14 @@ This is a delivery toolkit, not a cloud service, universal installer, antivirus,
 | Actual offline evidence | Disposable Linux namespace with only loopback and no main routes; install wheels with --no-index/--require-hashes and reverify from a fresh environment. |
 | Cross-platform assurance | Windows, macOS and Linux; Python 3.12/3.14, property-based tests, coverage, strict typing, dependency/secret/workflow scans and CodeQL. |
 
+## Windows desktop workbench
+
+The application provides real project controls, durable history and exact evidence export, created by Jason Stys. The one-file **DisconnectedReleaseKit.exe** bundles patched CPython 3.14.10, Tcl/Tk and the actual project runtime; end users need no Python, Node or command setup. This is a portable application, not an installer or an Authenticode-signed product. The source recipe and actual acceptance evidence are available now; public download/install status is a separate release decision.
+
+Verify an authorized signed release ZIP against a separately provisioned raw 32-byte Ed25519 public key, product, target, explicit sequence floor and review clock. Or compare that candidate with an explicitly selected existing owned deployment and exact expected-current digest. The actual original verifier reauthenticates manifests, SPDX, every payload byte, expiry, trust and sequence; review reports added, removed, changed and unchanged inventory. Inspect eligibility and retained high-water scope, then export the exact saved report. Signing, deployment initialization, activation and rollback remain explicit original CLI operations.
+
+[Desktop usage and privacy](docs/windows-app.md) · [Native validation record](docs/reports/native-workbench-2026-11-11.md). Existing CLI commands and explicit custom output paths remain supported.
+
 ## Quick start
 
 Requires Python 3.12+ and an initial trusted online setup. This does **not** bootstrap trust from an unverified bundle.
@@ -83,6 +91,7 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/reports/ci.json](docs/reports/ci.json) | Actual immutable accepted-source CI snapshot, not a future guarantee. |
 | [docs/reports/demo.json](docs/reports/demo.json) | Actual synthetic signed-release/tamper/rollback regression evidence. |
 | [docs/reports/documentation-refresh-2026-11-09.md](docs/reports/documentation-refresh-2026-11-09.md) | Documentation refresh — 2026-11-09. |
+| [docs/reports/native-workbench-2026-11-11.md](docs/reports/native-workbench-2026-11-11.md) | Native workbench validation — November 11, 2026. |
 | [docs/reports/offline.json](docs/reports/offline.json) | Actual no-uplink Linux namespace wheelhouse installation evidence. |
 | [docs/reports/portfolio-sync-2026-10-22.md](docs/reports/portfolio-sync-2026-10-22.md) | <!-- File: docs/reports/portfolio-sync-2026-10-22.md; Purpose: certificate-bundle security repair and evidence by Jason Stys. -->. |
 | [docs/reports/project-guide.docx](docs/reports/project-guide.docx) | Reviewed source-bound Word guide with dated validation observations and practical limits. |
@@ -94,36 +103,57 @@ Accepted-source checks: 95 tests on Linux/macOS, 94 + one expected POSIX-only sk
 | [docs/testing.md](docs/testing.md) | Testing strategy and acceptance criteria. |
 | [docs/usage.md](docs/usage.md) | Usage and disconnected preparation. |
 | [docs/validation.md](docs/validation.md) | Actual validation results. |
+| [docs/windows-app.md](docs/windows-app.md) | Windows application: disconnected-release-kit. |
 | [drkit/\_\_init\_\_.py](drkit/__init__.py) | Disconnected Release Kit: bounded signed offline delivery, created by Jason Stys. |
 | [drkit/bundle.py](drkit/bundle.py) | Jason Stys: deterministic Ed25519-signed ZIP bundles with independent trust and bounded verification. |
 | [drkit/cli.py](drkit/cli.py) | Jason Stys: explicit signing, verification and owned-root activation CLI; no auto-execution or key logging. |
 | [drkit/contracts.py](drkit/contracts.py) | Jason Stys: strict release contracts, bounded canonical JSON and portable payload paths. |
 | [drkit/deploy.py](drkit/deploy.py) | Jason Stys: owned-root staging, atomic activation, compare-and-swap and explicit non-destructive rollback. |
+| [drkit/desktop.py](drkit/desktop.py) | Native offline workbench: real project inputs, analysis, searchable evidence, history and export. Jason Stys. |
+| [drkit/desktop\_io.py](drkit/desktop_io.py) | Bounded regular descriptor reads and strict finite JSON for owner-local desktop state. Jason Stys. |
+| [drkit/desktop\_project.py](drkit/desktop_project.py) | Independent-trust signed-bundle verification and nonexecuting transfer review GUI. Jason Stys. |
+| [drkit/desktop\_state.py](drkit/desktop_state.py) | Owner-local desktop profile, bounded durable bundles and non-overwriting export. Jason Stys. |
+| [drkit/inputs.py](drkit/inputs.py) | Bounded stable ordinary-file reads and streaming tool hashes for offline identity inputs. Jason Stys. |
 | [drkit/inventory.py](drkit/inventory.py) | Jason Stys: deterministic SPDX 2.3 blob/file inventory; no invented dependency or license claims. |
 | [drkit/review.py](drkit/review.py) | Jason Stys: authenticated candidate/active inventory review and non-executing transfer-review receipt. |
 | [examples/service.py](examples/service.py) | Jason Stys: synthetic trusted offline application, no external data, network access or commands. |
+| [licenses/OpenSSL-4.0.3-LICENSE.txt](licenses/OpenSSL-4.0.3-LICENSE.txt) | Unmodified Apache-2.0 license from the exact OpenSSL 4.0.3 source tag used by the cryptography wheel. |
+| [licenses/README.md](licenses/README.md) | Bundled cryptographic runtime notices. |
 | [pyproject.toml](pyproject.toml) | Jason Stys: strict typed signed-delivery runtime and branch coverage across every runtime module. |
 | [requirements-dev.in](requirements-dev.in) | Jason Stys: complete test, type, format, dependency-audit and SPDX schema validation tools. |
 | [requirements-dev.lock](requirements-dev.lock) | Universal full hash-locked development and independent audit graph. |
+| [requirements-native.lock](requirements-native.lock) | Exact hash-locked portable freezer graph, separate from the project runtime. |
 | [requirements.in](requirements.in) | Jason Stys: maintained Ed25519 implementation; no handwritten cryptographic primitive. |
 | [requirements.lock](requirements.lock) | Universal full hash-locked offline runtime graph. |
 | [scripts/benchmark.py](scripts/benchmark.py) | Jason Stys: bounded synthetic build/verify benchmark; no hardware-independent speed promises. |
+| [scripts/build\_native.py](scripts/build_native.py) | Build the complete real offline workbench as one Windows portable executable. Jason Stys. |
 | [scripts/code\_map.py](scripts/code_map.py) | Jason Stys: exact Python AST definition/parameter/variable maps and lexical Bash/workflow line indexes. |
 | [scripts/demo.py](scripts/demo.py) | Jason Stys: synthetic reproducibility, admission rejection and explicit rollback acceptance report. |
 | [scripts/file\_guide.py](scripts/file_guide.py) | Jason Stys: exact tracked-file README purpose inventory, unknown files fail rather than receive guesses. |
+| [scripts/native\_acceptance.py](scripts/native_acceptance.py) | Actual final portable widgets/core/native-window acceptance with independent oracles. Jason Stys. |
+| [scripts/native\_common.py](scripts/native_common.py) | Actual patched Python/Tcl/Tk/PyInstaller runtime notices and authored portable icon. Jason Stys. |
+| [scripts/native\_entry.py](scripts/native_entry.py) | Launch the actual bundled offline project workbench; no setup shell commands. Jason Stys. |
 | [scripts/offline.sh](scripts/offline.sh) | Jason Stys: disposable CI-only loopback namespace; never alter the developer PC or host routes. |
 | [scripts/offline\_prepare.py](scripts/offline_prepare.py) | Jason Stys: package reviewed source plus hash-locked platform wheels for an explicit disposable CI test. |
 | [scripts/offline\_probe.py](scripts/offline_probe.py) | Jason Stys: actual no-uplink Linux namespace install of separately verified hash-locked wheelhouse. |
 | [scripts/publication\_text.py](scripts/publication_text.py) | Jason Stys: inspect only named reviewed Office editions without hiding their XML. |
 | [scripts/scanners.py](scripts/scanners.py) | Install only hash-pinned official Linux scanner binaries. Created by Jason Stys. |
+| [scripts/test\_native\_app.py](scripts/test_native_app.py) | Run the real frozen workbench twice with an owned synthetic profile and exact bundle persistence. Jason Stys. |
 | [scripts/validate\_repo.py](scripts/validate_repo.py) | Jason Stys: fail-closed tracked-file privacy, third-party schema integrity and no-storage workflow checks. |
 | [tests/conftest.py](tests/conftest.py) | Jason Stys: isolated synthetic signing fixtures; no personal data or production trust. |
 | [tests/test\_boundaries.py](tests/test_boundaries.py) | Jason Stys: independent staging/aggregate-cap, encrypted flag and trusted-floor rollback boundaries. |
 | [tests/test\_bundle.py](tests/test_bundle.py) | Jason Stys: authenticated content, deterministic layout, malicious ZIPs and no-self-trust regressions. |
+| [tests/test\_bundle\_input.py](tests/test_bundle_input.py) | Actual same-descriptor regular-file and nonblocking FIFO admission for signed inputs. Jason Stys. |
 | [tests/test\_cli.py](tests/test_cli.py) | Jason Stys: complete explicit CLI lifecycle, safe failures and standalone module entry point. |
 | [tests/test\_contracts.py](tests/test_contracts.py) | Jason Stys: exact schema, time, path, canonical JSON and property-based admission boundaries. |
 | [tests/test\_deploy.py](tests/test_deploy.py) | Jason Stys: atomic pointer, crash residue, CAS, rollback and immutable retained-byte regressions. |
+| [tests/test\_desktop\_gui.py](tests/test_desktop_gui.py) | Presentation-adapter unit tests with real core/SQLite workers; real widgets are separately frozen-tested. Jason Stys. |
+| [tests/test\_desktop\_io.py](tests/test_desktop_io.py) | Private state JSON and bounded descriptor-read boundary cases with actual file bytes. Jason Stys. |
+| [tests/test\_desktop\_project.py](tests/test_desktop_project.py) | Actual independent signatures, transfer/CAS/floor and nonmutation GUI oracles. Jason Stys. |
+| [tests/test\_desktop\_state.py](tests/test_desktop_state.py) | Independent offline desktop ownership, byte-bound, SQLite and non-overwrite regressions. Jason Stys. |
 | [tests/test\_inventory.py](tests/test_inventory.py) | Jason Stys: independent official SPDX schema checks and exact blob checksum relationships. |
+| [tests/test\_native\_inputs.py](tests/test_native_inputs.py) | Actual same-descriptor input bounds and ownership-change cases for selected offline reports. Jason Stys. |
+| [tests/test\_profile\_admission.py](tests/test_profile_admission.py) | Actual pre-existing alias refusal and ordinary SQLite recovery continuity. Jason Stys. |
 | [tests/test\_publication\_text.py](tests/test_publication_text.py) | Jason Stys: actual Office ZIP fixtures retain text scanning and reject unknown content. |
 | [tests/test\_review.py](tests/test_review.py) | Jason Stys: authenticated inventory impact and non-executing review receipt regressions. |
 | [tools.lock.json](tools.lock.json) | Official Linux scanner versions, URLs and SHA256 digests. |

@@ -1,92 +1,97 @@
 """Jason Stys: deterministic Ed25519-signed ZIP bundles with independent trust and bounded verification."""
 # BEGIN CODE MAP (generated; python scripts/code_map.py)
-# variable: DOMAIN — line 120
-# definition: Verified — line 124
-# variable: metadata — line 127
-# variable: files — line 128
-# variable: digest — line 129
-# variable: archive — line 130
-# definition: pack — line 133
-# parameter: files — line 133
-# variable: buffer — line 135
-# variable: archive — line 138
-# variable: data — line 139
-# variable: name — line 139
-# variable: info — line 140
-# attribute: create_system — line 141
-# attribute: external_attr — line 142
-# definition: build — line 147
-# parameter: files — line 148
-# parameter: key — line 149
-# parameter: product — line 151
-# parameter: version — line 152
-# parameter: sequence — line 153
-# parameter: target — line 154
-# parameter: created — line 155
-# parameter: expires — line 156
-# parameter: revision — line 157
-# variable: meta — line 160
-# variable: total — line 163
-# variable: data — line 164
-# variable: name — line 164
-# variable: total — line 170
-# variable: contents — line 172
-# variable: data — line 176
-# variable: name — line 176
-# variable: raw — line 178
-# variable: signed — line 180
-# variable: result — line 181
-# definition: verify — line 186
-# parameter: data — line 186
-# parameter: policy — line 186
-# parameter: trusted_key — line 186
-# variable: _ — line 197
-# variable: disk — line 198
-# variable: start_disk — line 199
-# variable: count_disk — line 200
-# variable: count — line 201
-# variable: directory_size — line 202
-# variable: directory_offset — line 203
-# variable: comment — line 204
-# variable: contents — line 216
-# variable: archive — line 218
-# variable: members — line 219
-# variable: total — line 221
-# variable: member — line 222
-# variable: name — line 223
-# variable: cap — line 243
-# variable: total — line 245
-# variable: raw — line 260
-# variable: signature — line 260
-# variable: meta — line 266
-# variable: entry — line 268
-# variable: entry — line 271
-# variable: blob — line 272
-# variable: payload — line 277
-# variable: blob — line 278
-# variable: name — line 278
-# definition: read_file — line 292
-# parameter: limit — line 292
-# parameter: path — line 292
-# variable: stream — line 299
-# variable: value — line 300
-# definition: collect — line 305
-# parameter: root — line 305
-# variable: files — line 311
-# variable: total — line 312
-# variable: visited — line 313
-# variable: pending — line 314
-# variable: directory — line 316
-# variable: path — line 317
-# variable: visited — line 318
-# variable: relative — line 324
-# variable: name — line 326
-# variable: total — line 329
+# variable: DOMAIN — line 125
+# definition: Verified — line 129
+# variable: metadata — line 132
+# variable: files — line 133
+# variable: digest — line 134
+# variable: archive — line 135
+# definition: pack — line 138
+# parameter: files — line 138
+# variable: buffer — line 140
+# variable: archive — line 143
+# variable: data — line 144
+# variable: name — line 144
+# variable: info — line 145
+# attribute: create_system — line 146
+# attribute: external_attr — line 147
+# definition: build — line 152
+# parameter: files — line 153
+# parameter: key — line 154
+# parameter: product — line 156
+# parameter: version — line 157
+# parameter: sequence — line 158
+# parameter: target — line 159
+# parameter: created — line 160
+# parameter: expires — line 161
+# parameter: revision — line 162
+# variable: meta — line 165
+# variable: total — line 168
+# variable: data — line 169
+# variable: name — line 169
+# variable: total — line 175
+# variable: contents — line 177
+# variable: data — line 181
+# variable: name — line 181
+# variable: raw — line 183
+# variable: signed — line 185
+# variable: result — line 186
+# definition: verify — line 191
+# parameter: data — line 191
+# parameter: policy — line 191
+# parameter: trusted_key — line 191
+# variable: _ — line 202
+# variable: disk — line 203
+# variable: start_disk — line 204
+# variable: count_disk — line 205
+# variable: count — line 206
+# variable: directory_size — line 207
+# variable: directory_offset — line 208
+# variable: comment — line 209
+# variable: contents — line 221
+# variable: archive — line 223
+# variable: members — line 224
+# variable: total — line 226
+# variable: member — line 227
+# variable: name — line 228
+# variable: cap — line 248
+# variable: total — line 250
+# variable: raw — line 265
+# variable: signature — line 265
+# variable: meta — line 271
+# variable: entry — line 273
+# variable: entry — line 276
+# variable: blob — line 277
+# variable: payload — line 282
+# variable: blob — line 283
+# variable: name — line 283
+# definition: read_file — line 297
+# parameter: limit — line 297
+# parameter: path — line 297
+# variable: before — line 301
+# variable: flags — line 310
+# variable: descriptor — line 311
+# variable: opened — line 313
+# variable: stream — line 320
+# variable: value — line 321
+# definition: collect — line 328
+# parameter: root — line 328
+# variable: files — line 334
+# variable: total — line 335
+# variable: visited — line 336
+# variable: pending — line 337
+# variable: directory — line 339
+# variable: path — line 340
+# variable: visited — line 341
+# variable: relative — line 347
+# variable: name — line 349
+# variable: total — line 352
 # END CODE MAP
 
 from __future__ import annotations
 
 import io
+import os
 import stat
 import struct
 import zipfile
@@ -290,16 +295,34 @@ def verify(data: bytes, trusted_key: bytes, policy: Policy) -> Verified:
 
 
 def read_file(path: Path, limit: int = MAX_FILE) -> bytes:
-    """Read one regular nonlink file within a caller cap; local parent directories are trusted."""
+    """Read a bounded same-descriptor regular file; reject a last-component replacement without blocking on FIFOs."""
     require(integer(limit, 0, MAX_BUNDLE), "invalid local read cap")
+    try:
+        before = path.lstat()
+    except OSError:
+        raise Rejected("regular local file required") from None
     require(
-        not path.is_symlink() and not path.is_junction() and path.is_file(),
+        stat.S_ISREG(before.st_mode)
+        and not path.is_symlink()
+        and not path.is_junction(),
         "regular local file required",
     )
-    with path.open("rb") as stream:
-        value = stream.read(limit + 1)
-    require(len(value) <= limit, "local file exceeds size cap")
-    return value
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    descriptor = os.open(path, flags)
+    try:
+        opened = os.fstat(descriptor)
+        require(
+            stat.S_ISREG(opened.st_mode)
+            and (opened.st_dev, opened.st_ino) == (before.st_dev, before.st_ino),
+            "local input changed or is nonregular",
+        )
+        require(opened.st_size <= limit, "local file exceeds size cap")
+        with os.fdopen(descriptor, "rb", closefd=False) as stream:
+            value = stream.read(limit + 1)
+        require(len(value) <= limit, "local file exceeds size cap")
+        return value
+    finally:
+        os.close(descriptor)
 
 
 def collect(root: Path) -> dict[str, bytes]:
